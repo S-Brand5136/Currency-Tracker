@@ -1,6 +1,6 @@
 import { useColorScheme } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { RootTabParamList, RootTabScreenProps } from "../types";
+import { RootTabParamList, RootTabScreenProps } from "../@types/types";
 import { TabBarIcon } from "../components/TabBarIcon";
 import HomeTab from "../screens/HomeTab";
 import SearchTab from "../screens/SearchTab";

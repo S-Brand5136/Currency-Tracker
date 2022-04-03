@@ -12,10 +12,13 @@ export interface CurrentTrendData {
   vwrap24Hr: string;
 }
 
-const baseUrl = "api.coincap.io/v2/";
+const baseUrl = "https://api.coincap.io/v2/";
 
-export const fetchMarketData = async () => {
-  const response = await axios.get<CurrentTrendData[]>(`${baseUrl}assets`);
-
-  return response.data;
+export const fetchMarketData = async (populateData: Function) => {
+  try {
+    const response = await axios.get<CurrentTrendData[]>(`${baseUrl}assets`);
+    populateData(response.data);
+  } catch (error) {
+    console.log(error);
+  }
 };

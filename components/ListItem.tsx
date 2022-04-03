@@ -1,27 +1,16 @@
 import { View, Text } from "react-native";
 import React from "react";
-
-type Props = {
-  id: string;
-  symbol: string;
-  rank: string;
-  supply: string;
-  marketCap: string;
-  volumeUsd: string;
-  priceUsd: string;
-  changePercent: string;
-  vwrap: string;
-};
+import { CurrentTrendData } from "../api/coinCap";
 
 const ListItem = ({
   id,
   symbol,
   rank,
   supply,
-  marketCap,
-  volumeUsd,
+  marketCapUsd,
+  volumeUsd24Hr,
   priceUsd,
-}: Props): React.ReactNode => {
+}: CurrentTrendData) => {
   return (
     <View>
       <Text>{id}</Text>

@@ -5,7 +5,6 @@ import { RootTabScreenProps } from "../@types/types";
 export default function HomeTab({ navigation }: RootTabScreenProps<"TabOne">) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Home</Text>
       <View
         style={styles.separator}
         lightColor='#eee'

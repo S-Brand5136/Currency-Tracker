@@ -26,6 +26,7 @@ export const BottomTabNavigator = () => {
         name='TabOne'
         component={HomeTab}
         options={({ navigation }: RootTabScreenProps<"TabOne">) => ({
+          headerShown: false,
           title: "Home",
           tabBarIcon: ({ color }) => <TabBarIcon name='code' color={color} />,
         })}

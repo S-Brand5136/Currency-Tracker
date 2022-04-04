@@ -9,13 +9,15 @@ export default function HomeTab({ navigation }: RootTabScreenProps<"TabOne">) {
   const [marketData, setMarketData] = useState<CurrentTrendData[]>([]);
 
   useEffect(() => {
-    fetchMarketData((data: CurrentTrendData[]) => setMarketData([...data]));
+    fetchMarketData((response: { data: CurrentTrendData[] }) =>
+      setMarketData([...response.data])
+    );
   }, []);
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Trending Coins</Text>
-      <TrendingList data={marketData} />
+      {marketData.length > 0 ? <TrendingList data={marketData} /> : null}
     </View>
   );
 }
@@ -23,14 +25,16 @@ export default function HomeTab({ navigation }: RootTabScreenProps<"TabOne">) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingTop: 40,
     alignItems: "center",
     justifyContent: "center",
   },
   title: {
-    fontSize: 20,
+    fontSize: 18,
     fontWeight: "bold",
+    opacity: 0.8,
+    marginLeft: 25,
     textAlign: "left",
     width: "100%",
-    marginLeft: 25,
   },
 });

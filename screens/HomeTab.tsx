@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 18,
-    fontWeight: "bold",
+    fontFamily: "Cabin-Bold",
     opacity: 0.8,
     marginLeft: 25,
     textAlign: "left",

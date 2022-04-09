@@ -1,5 +1,6 @@
-import { View, Text, Pressable, StyleSheet } from "react-native";
 import React from "react";
+import { useNavigation } from "@react-navigation/native";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { CurrentTrendData } from "../api/coinCap";
 
 type Props = {
@@ -24,9 +25,15 @@ const upperCaseFirstLetter = (str: String): String => {
 const ListItem = ({
   item: { id, symbol, rank, priceUsd, changePercent24Hr },
 }: Props) => {
+  const navigation = useNavigation();
+  const title = interpolateId(id);
+
   return (
     <View style={styles.layout}>
-      <Pressable style={styles.itemLayout}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate("Modal", { title, id })}
+        style={styles.itemLayout}
+      >
         <View style={{ flexDirection: "row" }}>
           <Text style={styles.rank}>{rank}</Text>
           <View
@@ -35,7 +42,7 @@ const ListItem = ({
               justifyContent: "flex-start",
             }}
           >
-            <Text style={styles.title}>{interpolateId(id)}</Text>
+            <Text style={styles.title}>{title}</Text>
             <Text style={styles.symbol}>{symbol}</Text>
           </View>
         </View>
@@ -54,7 +61,7 @@ const ListItem = ({
             {Number(changePercent24Hr).toFixed(2)}%
           </Text>
         </View>
-      </Pressable>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -68,8 +75,8 @@ const styles = StyleSheet.create({
   },
   itemLayout: {
     backgroundColor: "#fff",
-    width: "80%",
-    padding: 10,
+    width: "90%",
+    padding: 12,
     borderRadius: 5,
     shadowColor: "#000",
     elevation: 3,

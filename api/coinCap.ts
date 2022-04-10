@@ -12,11 +12,27 @@ export interface CurrentTrendData {
   vwrap24Hr: string;
 }
 
+export interface CoinHistory {
+  priceUsd: string;
+  time: number;
+}
+
 const baseUrl = "https://api.coincap.io/v2/";
 
 export const fetchMarketData = async (populateData: Function) => {
   try {
     const response = await axios.get<CurrentTrendData[]>(`${baseUrl}assets`);
+    populateData(response.data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const fetchCoinHistory = async (id: string, populateData: Function) => {
+  try {
+    const response = await axios.get<CoinHistory[]>(
+      `${baseUrl}assets/${id}/history`
+    );
     populateData(response.data);
   } catch (error) {
     console.log(error);

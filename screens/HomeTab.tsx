@@ -1,23 +1,22 @@
-import { useEffect, useState } from "react";
 import { StyleSheet } from "react-native";
 import { Text, View } from "../components/Themed";
 import { RootTabScreenProps } from "../@types/types";
 import TrendingList from "../components/TrendingList";
-import { CurrentTrendData, fetchMarketData } from "../api/coinCap";
+import useAxios from "../hooks/useAxios";
 
-export default function HomeTab({ navigation }: RootTabScreenProps<"TabOne">) {
-  const [marketData, setMarketData] = useState<CurrentTrendData[]>([]);
-
-  useEffect(() => {
-    fetchMarketData((response: { data: CurrentTrendData[] }) =>
-      setMarketData([...response.data])
-    );
-  }, []);
+export default function HomeTab({}: RootTabScreenProps<"TabOne">) {
+  const { response, loading, error, sendData } = useAxios(
+    {
+      method: "GET",
+      url: "/assets",
+    },
+    "https://api.coincap.io/v2"
+  );
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Trending Coins</Text>
-      {marketData.length > 0 ? <TrendingList data={marketData} /> : null}
+      {!loading && !error ? <TrendingList data={response?.data.data} /> : null}
     </View>
   );
 }

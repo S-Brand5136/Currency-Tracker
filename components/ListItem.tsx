@@ -7,7 +7,7 @@ type Props = {
   item: CurrentTrendData;
 };
 
-const interpolateId = (id: String): String => {
+const interpolateId = (id: string): string => {
   const deHyphenated = id.replace("-", " ");
 
   return deHyphenated
@@ -18,7 +18,7 @@ const interpolateId = (id: String): String => {
     .join(" ");
 };
 
-const upperCaseFirstLetter = (str: String): String => {
+const upperCaseFirstLetter = (str: string): string => {
   return str[0].toUpperCase() + str.substring(1);
 };
 

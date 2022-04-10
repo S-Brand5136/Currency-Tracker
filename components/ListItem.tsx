@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import { CurrentTrendData } from "../api/coinCap";
+import { CurrentTrendData } from "../interfaces/CoinCap";
 
 type Props = {
   item: CurrentTrendData;

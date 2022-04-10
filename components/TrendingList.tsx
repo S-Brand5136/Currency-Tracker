@@ -1,6 +1,6 @@
 import React from "react";
 import { View, FlatList, StyleSheet } from "react-native";
-import { CurrentTrendData } from "../api/coinCap";
+import { CurrentTrendData } from "../interfaces/CoinCap";
 import ListItem from "./ListItem";
 
 type Props = {

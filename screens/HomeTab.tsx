@@ -3,6 +3,7 @@ import { Text, View } from "../components/Themed";
 import { RootTabScreenProps } from "../@types/types";
 import TrendingList from "../components/TrendingList";
 import useAxios from "../hooks/useAxios";
+import Banner from "../components/Banner";
 
 export default function HomeTab({}: RootTabScreenProps<"TabOne">) {
   const { response, loading, error, sendData } = useAxios(
@@ -15,7 +16,15 @@ export default function HomeTab({}: RootTabScreenProps<"TabOne">) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Trending Coins</Text>
+      <Banner
+        title='Welcome to the Market'
+        message='Start tracking your favourite crypto currencies today!'
+        buttonText='Search Currencies'
+        color='#0063F5'
+      />
+      <Text darkColor='rgba(255,255,255,0.1)' style={styles.title}>
+        Trending Coins
+      </Text>
       {!loading && !error ? <TrendingList data={response?.data.data} /> : null}
     </View>
   );
@@ -29,10 +38,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   title: {
-    fontSize: 18,
+    fontSize: 22,
     fontFamily: "Cabin-Bold",
-    opacity: 0.8,
     marginLeft: 25,
+    marginBottom: 8,
     textAlign: "left",
     width: "100%",
   },

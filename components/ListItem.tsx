@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
   },
   itemLayout: {
     backgroundColor: "#fff",
-    width: "90%",
+    width: "95%",
     padding: 12,
     borderRadius: 5,
     shadowColor: "#000",

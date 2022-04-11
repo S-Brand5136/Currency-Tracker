@@ -32,7 +32,7 @@ export const BottomTabNavigator = () => {
         })}
       />
       <BottomTab.Screen
-        name='TabTwo'
+        name='Search'
         component={SearchTab}
         options={{
           title: "Search",

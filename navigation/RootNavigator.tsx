@@ -24,7 +24,11 @@ export const RootNavigator = () => {
         options={{ title: "Oops!" }}
       />
       <Stack.Group screenOptions={{ presentation: "modal" }}>
-        <Stack.Screen name='Modal' component={CoinInfoModal} />
+        <Stack.Screen
+          name='Modal'
+          options={{ headerShadowVisible: false }}
+          component={CoinInfoModal}
+        />
       </Stack.Group>
     </Stack.Navigator>
   );

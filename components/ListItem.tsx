@@ -31,7 +31,16 @@ const ListItem = ({
   return (
     <View style={styles.layout}>
       <TouchableOpacity
-        onPress={() => navigation.navigate("Modal", { title, id })}
+        onPress={() =>
+          navigation.navigate("Modal", {
+            title,
+            id,
+            symbol,
+            rank,
+            priceUsd,
+            changePercent24Hr,
+          })
+        }
         style={styles.itemLayout}
       >
         <View style={{ flexDirection: "row" }}>

@@ -2,26 +2,21 @@ import { useState } from "react";
 
 interface IntervalFilter {}
 
-interface intervalArray {
-  title: string;
-  interval: string;
-  selected: boolean;
-}
-
-export const useIntervalFilter = () => {
-  const intervals: intervalArray[] = [
-    { title: "1 H", interval: "h1", selected: false },
-    { title: "6 H", interval: "h6", selected: false },
-    { title: "1 D", interval: "d1", selected: true },
-    { title: "1 M", interval: "m1", selected: false },
-    { title: "5 M", interval: "m5", selected: false },
-    { title: "15 M", interval: "m15", selected: false },
+export default () => {
+  const intervals = [
+    { title: "1 H", interval: "h1" },
+    { title: "6 H", interval: "h6" },
+    { title: "1 D", interval: "d1" },
+    { title: "1 M", interval: "m1" },
+    { title: "5 M", interval: "m5" },
+    { title: "15 M", interval: "m15" },
   ];
+
   const [interval, setInterval] = useState("d1");
 
   const filterOnPressHandler = (interval: string): void => {
-    setInterval(interval);
+    return setInterval(interval);
   };
 
-  return [interval, intervals, filterOnPressHandler];
+  return [interval, intervals, filterOnPressHandler] as const;
 };

@@ -22,7 +22,7 @@ const upperCaseFirstLetter = (str: string): string => {
   return str[0].toUpperCase() + str.substring(1);
 };
 
-const ListItem = ({
+const CurrencyCard = ({
   item: { id, symbol, rank, priceUsd, changePercent24Hr },
 }: Props) => {
   const navigation = useNavigation();
@@ -125,4 +125,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ListItem;
+export default CurrencyCard;

@@ -8,7 +8,7 @@ import ModalHeader from "../components/ModalHeader";
 import HistoryChart from "../components/HistoryChart";
 import useIntervalFilter from "../hooks/useIntervalFilter";
 import FilterButton from "../components/FilterButton";
-import ListItem from "../components/ListItem";
+import CurrencyCard from "../components/CurrencyCard";
 
 type Props = {
   title: string;
@@ -68,7 +68,9 @@ const CoinInfoModal = (props: Props) => {
       <HistoryChart />
       <View style={styles.filterButtonList}>{filterBtns(intervals)}</View>
       <View style={{ marginTop: 25, marginRight: 5 }}>
-        <ListItem item={{ id, symbol, rank, priceUsd, changePercent24Hr }} />
+        <CurrencyCard
+          item={{ id, symbol, rank, priceUsd, changePercent24Hr }}
+        />
       </View>
 
       <View style={styles.transactions}>

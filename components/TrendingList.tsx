@@ -1,7 +1,7 @@
 import React from "react";
 import { View, FlatList, StyleSheet } from "react-native";
 import { CurrentTrendData } from "../interfaces/CoinCap";
-import ListItem from "./ListItem";
+import CurrenyCard from "./CurrencyCard";
 
 type Props = {
   data: CurrentTrendData[];
@@ -15,7 +15,7 @@ const TrendingList = ({ data }: Props) => {
         showsVerticalScrollIndicator={false}
         keyExtractor={(data) => data.id}
         renderItem={({ item }) => {
-          return <ListItem item={item} />;
+          return <CurrenyCard item={item} />;
         }}
       />
     </View>

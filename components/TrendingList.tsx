@@ -1,7 +1,7 @@
 import React from "react";
 import { View, FlatList, StyleSheet } from "react-native";
 import { CurrentTrendData } from "../interfaces/CoinCap";
-import CurrenyCard from "./CurrencyCard";
+import CurrenyCard from "./cards/CurrencyCard";
 
 type Props = {
   data: CurrentTrendData[];

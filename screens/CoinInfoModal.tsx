@@ -1,14 +1,12 @@
 import { useEffect } from "react";
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
-import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { RootStackParamList } from "../@types/types";
-import { MaterialIcons } from "@expo/vector-icons";
-import useAxios from "../hooks/useAxios";
-import ModalHeader from "../components/ModalHeader";
-import HistoryChart from "../components/HistoryChart";
-import useIntervalFilter from "../hooks/useIntervalFilter";
-import FilterButton from "../components/FilterButton";
-import CurrencyCard from "../components/CurrencyCard";
+import ModalHeader from "../components/modal/ModalHeader";
+import HistoryChart from "../components/modal/HistoryChart";
+import CurrencyCard from "../components/cards/CurrencyCard";
+import ModalFooter from "../components/modal/ModalFooter";
+import CardButton from "../components/cards/CardButton";
 
 type Props = {
   title: string;
@@ -20,7 +18,6 @@ const CoinInfoModal = (props: Props) => {
     params: { title, id, symbol, rank, priceUsd, changePercent24Hr },
   } = useRoute<RouteProp<RootStackParamList, "Modal">>();
   const navigation = useNavigation();
-  const [interval, intervals, filterOnPressHandler] = useIntervalFilter();
 
   useEffect(() => {
     navigation.setOptions({
@@ -28,27 +25,6 @@ const CoinInfoModal = (props: Props) => {
       id,
     });
   }, []);
-
-  const { response, loading, error, sendData } = useAxios(
-    {
-      method: "GET",
-      url: `/assets/${id}/history?interval=${interval}`,
-    },
-    "https://api.coincap.io/v2"
-  );
-
-  const filterBtns = (array: any) => {
-    return array.map((item: any, index: any) => {
-      return (
-        <FilterButton
-          key={index}
-          title={item.title}
-          selected={interval === item.interval}
-          onPress={() => filterOnPressHandler(item.interval)}
-        />
-      );
-    });
-  };
 
   return (
     <View style={styles.layout}>
@@ -65,76 +41,14 @@ const CoinInfoModal = (props: Props) => {
           {Number(changePercent24Hr).toFixed(2)}%
         </Text>
       </View>
-      <HistoryChart />
-      <View style={styles.filterButtonList}>{filterBtns(intervals)}</View>
-      <View style={{ marginTop: 25, marginRight: 5 }}>
-        <CurrencyCard
-          item={{ id, symbol, rank, priceUsd, changePercent24Hr }}
-        />
-      </View>
 
-      <View style={styles.transactions}>
-        <TouchableOpacity>
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-            }}
-          >
-            <Text
-              style={{
-                fontFamily: "Cabin-Bold",
-                fontSize: 16,
-                letterSpacing: 0.75,
-              }}
-            >
-              Transactions
-            </Text>
-            <MaterialIcons
-              name='arrow-forward-ios'
-              style={{
-                fontFamily: "Cabin-Bold",
-                fontSize: 20,
-                textAlign: "right",
-                width: "73%",
-              }}
-            />
-          </View>
-        </TouchableOpacity>
-      </View>
+      <HistoryChart id={id} />
 
-      <View style={styles.buyAndSell}>
-        <TouchableOpacity
-          style={styles.buySellButton}
-          onPress={() => console.log("Buy")}
-        >
-          <Text
-            style={{
-              color: "#fff",
-              fontFamily: "Cabin-Bold",
-              fontSize: 18,
-              letterSpacing: 0.75,
-            }}
-          >
-            BUY
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.buySellButton}
-          onPress={() => console.log("Buy")}
-        >
-          <Text
-            style={{
-              color: "#fff",
-              fontFamily: "Cabin-Bold",
-              fontSize: 18,
-              letterSpacing: 0.75,
-            }}
-          >
-            SELL
-          </Text>
-        </TouchableOpacity>
-      </View>
+      <CurrencyCard item={{ id, symbol, rank, priceUsd, changePercent24Hr }} />
+
+      <CardButton onPress={() => console.log("pressed")} title='Transactions' />
+
+      <ModalFooter />
     </View>
   );
 };
@@ -166,49 +80,5 @@ const styles = StyleSheet.create({
     fontFamily: "Cabin-Bold",
     opacity: 0.8,
     textAlign: "right",
-  },
-  filterButtonList: {
-    alignContent: "center",
-    flexDirection: "row",
-    justifyContent: "space-around",
-    marginTop: 10,
-    width: "90%",
-  },
-  transactions: {
-    backgroundColor: "#fff",
-    width: "94%",
-    padding: 12,
-    paddingVertical: 15,
-    borderRadius: 5,
-    shadowColor: "#000",
-    elevation: 3,
-    marginVertical: 15,
-    justifyContent: "space-between",
-    alignItems: "center",
-    flexDirection: "row",
-  },
-  buyAndSell: {
-    backgroundColor: "#fff",
-    width: "100%",
-    height: 100,
-    padding: 12,
-    position: "absolute",
-    bottom: -10,
-    paddingVertical: 15,
-    borderRadius: 15,
-    shadowColor: "#000",
-    elevation: 15,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignContent: "space-around",
-  },
-  buySellButton: {
-    backgroundColor: "#0063F5",
-    borderRadius: 5,
-    width: "47%",
-    height: "75%",
-    marginBottom: 15,
-    justifyContent: "center",
-    alignItems: "center",
   },
 });

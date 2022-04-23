@@ -17,13 +17,9 @@ const FilterButton = (props: Props) => {
     : {};
 
   return (
-    <View>
-      <TouchableOpacity onPress={() => props.onPress()}>
-        <Text style={{ ...styles.title, ...selectedStyling }}>
-          {props.title}
-        </Text>
-      </TouchableOpacity>
-    </View>
+    <TouchableOpacity onPress={() => props.onPress()}>
+      <Text style={{ ...styles.title, ...selectedStyling }}>{props.title}</Text>
+    </TouchableOpacity>
   );
 };
 

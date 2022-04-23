@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import { CurrentTrendData } from "../interfaces/CoinCap";
+import { CurrentTrendData } from "../../interfaces/CoinCap";
 
 type Props = {
   item: CurrentTrendData;
@@ -41,7 +41,7 @@ const CurrencyCard = ({
             changePercent24Hr,
           })
         }
-        style={styles.itemLayout}
+        style={styles.buttonLayout}
       >
         <View style={{ flexDirection: "row" }}>
           <Text style={styles.rank}>{rank}</Text>
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     alignContent: "center",
     flexDirection: "row",
   },
-  itemLayout: {
+  buttonLayout: {
     backgroundColor: "#fff",
     width: "95%",
     padding: 12,

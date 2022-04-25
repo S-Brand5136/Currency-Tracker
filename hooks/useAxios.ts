@@ -10,6 +10,7 @@ const useAxios = (axiosParams: AxiosRequestConfig, baseURL: string) => {
 
   const fetchData = async (params: AxiosRequestConfig) => {
     try {
+      setLoading(true);
       const result = await axios.request(params);
       setResponse(result);
     } catch (err: AxiosError | any) {

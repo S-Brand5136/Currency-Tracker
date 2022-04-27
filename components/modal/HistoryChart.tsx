@@ -4,23 +4,11 @@ import { StyleSheet, View } from "react-native";
 import { LineChart } from "react-native-chart-kit";
 import { LineChartData } from "react-native-chart-kit/dist/line-chart/LineChart";
 import useAxios from "../../hooks/useAxios";
-import useIntervalFilter from "../../hooks/useIntervalFilter";
 import FilterList from "./FilterList";
 
 type Props = {
   id: string;
 };
-
-// // Dummy data
-// const data = {
-//   labels: ["January", "February", "March", "April", "May", "June"],
-//   datasets: [
-//     {
-//       data: [20, 45, 28, 80, 99, 43],
-//       color: (opacity = 1) => `rgba(0, 99, 245, ${opacity})`,
-//     },
-//   ],
-// };
 
 const chartConfig = {
   backgroundGradientFrom: "#fff",
@@ -29,9 +17,17 @@ const chartConfig = {
   barPercentage: 0.5,
 };
 
+const intervals = [
+  { title: "1 H", interval: "h1" },
+  { title: "2 H", interval: "h2" },
+  { title: "6 H", interval: "h6" },
+  { title: "12 H", interval: "h12" },
+  { title: "1 D", interval: "d1" },
+];
+
 const HistoryChart = (props: Props) => {
   const screenWidth = Dimensions.get("window").width;
-  const [interval, setIntervals, intervals] = useIntervalFilter();
+  const [interval, setInterval] = useState("d1");
   const [data, setData] = useState<LineChartData>({
     labels: [],
     datasets: [],
@@ -44,10 +40,9 @@ const HistoryChart = (props: Props) => {
     "https://api.coincap.io/v2"
   );
 
-  const getCoinHistory = async (interval: string) => {
-    setIntervals(interval);
+  useEffect(() => {
     sendData();
-  };
+  }, [interval]);
 
   useEffect(() => {
     if (!loading) {
@@ -89,7 +84,7 @@ const HistoryChart = (props: Props) => {
       <FilterList
         interval={interval}
         intervals={intervals}
-        onPress={(interval: string) => getCoinHistory(interval)}
+        onPress={(interval: string) => setInterval(interval)}
       />
     </View>
   );
@@ -100,14 +95,13 @@ export default HistoryChart;
 const styles = StyleSheet.create({
   layout: {
     flexDirection: "column",
-    justifyContent: "center",
-    alignContent: "center",
+    alignItems: "center",
     marginVertical: 18,
     width: "100%",
   },
   chartLayout: {
     flexDirection: "row",
     justifyContent: "center",
-    alignContent: "center",
+    alignItems: "center",
   },
 });

@@ -9,8 +9,8 @@ const useAxios = (axiosParams: AxiosRequestConfig, baseURL: string) => {
   const [loading, setLoading] = useState(true);
 
   const fetchData = async (params: AxiosRequestConfig) => {
+    setLoading(true);
     try {
-      setLoading(true);
       const result = await axios.request(params);
       setResponse(result);
     } catch (err: AxiosError | any) {

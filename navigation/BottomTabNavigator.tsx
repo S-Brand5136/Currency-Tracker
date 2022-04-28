@@ -28,7 +28,7 @@ export const BottomTabNavigator = () => {
         options={({ navigation }: RootTabScreenProps<"TabOne">) => ({
           headerShown: false,
           title: "Home",
-          tabBarIcon: ({ color }) => <TabBarIcon name='code' color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name='home' color={color} />,
         })}
       />
       <BottomTab.Screen
@@ -36,7 +36,7 @@ export const BottomTabNavigator = () => {
         component={SearchTab}
         options={{
           title: "Search",
-          tabBarIcon: ({ color }) => <TabBarIcon name='code' color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name='search' color={color} />,
         }}
       />
     </BottomTab.Navigator>

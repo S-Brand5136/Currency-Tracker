@@ -4,6 +4,7 @@ import { RootTabScreenProps } from "../@types/types";
 import TrendingList from "../components/TrendingList";
 import useAxios from "../hooks/useAxios";
 import Banner from "../components/Banner";
+import Loader from "../components/Loader";
 
 export default function HomeTab({}: RootTabScreenProps<"TabOne">) {
   const { response, loading, error, sendData } = useAxios(
@@ -25,6 +26,7 @@ export default function HomeTab({}: RootTabScreenProps<"TabOne">) {
       <Text darkColor='rgba(255,255,255,0.1)' style={styles.title}>
         Trending Coins
       </Text>
+      {loading && <Loader size={"large"} color='rgba(0, 99, 245, 1)' />}
       {!loading && !error ? <TrendingList data={response?.data.data} /> : null}
     </View>
   );

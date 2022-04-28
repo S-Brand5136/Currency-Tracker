@@ -4,6 +4,7 @@ import { StyleSheet, View } from "react-native";
 import { LineChart } from "react-native-chart-kit";
 import { LineChartData } from "react-native-chart-kit/dist/line-chart/LineChart";
 import useAxios from "../../hooks/useAxios";
+import Loader from "../Loader";
 import FilterList from "./FilterList";
 
 type Props = {
@@ -66,7 +67,12 @@ const HistoryChart = (props: Props) => {
 
   return (
     <View style={styles.layout}>
-      {data.datasets.length <= 0 ? null : (
+      {loading && (
+        <View style={{ height: 220 }}>
+          <Loader size={"large"} color='rgba(0, 99, 245, 1)' />
+        </View>
+      )}
+      {!loading && (
         <LineChart
           style={styles.chartLayout}
           data={data}
@@ -96,6 +102,8 @@ const styles = StyleSheet.create({
   layout: {
     flexDirection: "column",
     alignItems: "center",
+    alignContent: "center",
+    justifyContent: "center",
     marginVertical: 18,
     width: "100%",
   },

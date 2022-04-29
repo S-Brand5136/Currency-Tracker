@@ -1,8 +1,10 @@
 import React from "react";
 import {
+  NativeSyntheticEvent,
   StyleSheet,
   Text,
   TextInput,
+  TextInputEndEditingEventData,
   TouchableOpacity,
   View,
 } from "react-native";
@@ -11,7 +13,9 @@ import { Ionicons } from "@expo/vector-icons";
 
 type Props = {
   value: string;
-  onChange: Function;
+  onChange: (value: string) => void;
+  onSubmit: (e: NativeSyntheticEvent<TextInputEndEditingEventData>) => void;
+  onPress: () => void;
 };
 
 const SearchForm = (props: Props) => {
@@ -22,9 +26,10 @@ const SearchForm = (props: Props) => {
         placeholder='Search Cryptocurrency'
         style={styles.searchInput}
         value={props.value}
-        onChange={(value) => props.onChange(value)}
+        onChangeText={props.onChange}
+        onEndEditing={props.onSubmit}
       />
-      <TouchableOpacity>
+      <TouchableOpacity onPress={props.onPress}>
         <Text>Cancel</Text>
       </TouchableOpacity>
     </View>

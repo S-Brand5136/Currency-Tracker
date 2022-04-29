@@ -36,6 +36,7 @@ export const BottomTabNavigator = () => {
         component={SearchTab}
         options={{
           title: "Search",
+          headerShown: false,
           tabBarIcon: ({ color }) => <TabBarIcon name='search' color={color} />,
         }}
       />

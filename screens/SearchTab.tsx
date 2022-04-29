@@ -1,32 +1,28 @@
-import { StyleSheet } from "react-native";
-import { Text, View } from "../components/Themed";
+import { useState } from "react";
+import { View, StyleSheet } from "react-native";
+import SearchForm from "../components/SearchForm";
 
 export default function SearchTab() {
+  const [searchValue, setSearchValue] = useState("");
+
+  const onSearch = (value: string): void => {
+    setSearchValue(value);
+  };
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Search</Text>
-      <View
-        style={styles.separator}
-        lightColor='#eee'
-        darkColor='rgba(255,255,255,0.1)'
+    <View style={styles.layout}>
+      <SearchForm
+        value={searchValue}
+        onChange={(value: string) => onSearch(value)}
       />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  layout: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: "bold",
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: "80%",
   },
 });

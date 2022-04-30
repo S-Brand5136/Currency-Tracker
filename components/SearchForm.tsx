@@ -14,7 +14,7 @@ import { Ionicons } from "@expo/vector-icons";
 type Props = {
   value: string;
   onChange: (value: string) => void;
-  onSubmit: (e: NativeSyntheticEvent<TextInputEndEditingEventData>) => void;
+  onEndEditing: (e: NativeSyntheticEvent<TextInputEndEditingEventData>) => void;
   onPress: () => void;
 };
 
@@ -27,7 +27,7 @@ const SearchForm = (props: Props) => {
         style={styles.searchInput}
         value={props.value}
         onChangeText={props.onChange}
-        onEndEditing={props.onSubmit}
+        onEndEditing={props.onEndEditing}
       />
       <TouchableOpacity onPress={props.onPress}>
         <Text>Cancel</Text>

@@ -8,12 +8,7 @@ import CurrencyCard from "../components/cards/CurrencyCard";
 import ModalFooter from "../components/modal/ModalFooter";
 import CardButton from "../components/cards/CardButton";
 
-type Props = {
-  title: string;
-  symbol: string;
-};
-
-const CoinInfoModal = (props: Props) => {
+const CoinInfoModal = () => {
   const {
     params: { title, id, symbol, rank, priceUsd, changePercent24Hr },
   } = useRoute<RouteProp<RootStackParamList, "Modal">>();

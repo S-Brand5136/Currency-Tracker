@@ -24,12 +24,6 @@ const useAxios = (axiosParams: AxiosRequestConfig, baseURL: string) => {
     fetchData(axiosParams);
   };
 
-  useEffect(() => {
-    if (axiosParams.method === "GET" || axiosParams.method === "get") {
-      fetchData(axiosParams);
-    }
-  }, []);
-
   return { response, error, loading, sendData };
 };
 

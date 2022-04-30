@@ -5,6 +5,7 @@ import TrendingList from "../components/TrendingList";
 import useAxios from "../hooks/useAxios";
 import Banner from "../components/Banner";
 import Loader from "../components/Loader";
+import { useEffect } from "react";
 
 export default function HomeTab({}: RootTabScreenProps<"TabOne">) {
   const { response, loading, error, sendData } = useAxios(
@@ -14,6 +15,10 @@ export default function HomeTab({}: RootTabScreenProps<"TabOne">) {
     },
     "https://api.coincap.io/v2"
   );
+
+  useEffect(() => {
+    sendData();
+  }, []);
 
   return (
     <View style={styles.container}>

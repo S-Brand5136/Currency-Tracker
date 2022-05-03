@@ -36,7 +36,10 @@ export default function SearchTab() {
         value={searchValue}
         onChange={(value: string) => setSearchValue(value)}
         onEndEditing={onSearch}
-        onPress={() => setSearchValue("")}
+        onPress={() => {
+          setSearchValue("");
+          setDataArray(undefined);
+        }}
       />
       {dataArray && (
         <View

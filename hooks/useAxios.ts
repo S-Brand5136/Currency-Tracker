@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 
 const useAxios = (axiosParams: AxiosRequestConfig, baseURL: string) => {
@@ -6,7 +6,7 @@ const useAxios = (axiosParams: AxiosRequestConfig, baseURL: string) => {
 
   const [response, setResponse] = useState<AxiosResponse>();
   const [error, setError] = useState<AxiosError>();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   const fetchData = async (params: AxiosRequestConfig) => {
     setLoading(true);

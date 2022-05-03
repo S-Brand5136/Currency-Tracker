@@ -46,7 +46,7 @@ const HistoryChart = (props: Props) => {
   }, [interval]);
 
   useEffect(() => {
-    if (!loading) {
+    if (!loading && response) {
       const historyData: LineChartData = {
         labels: [],
         datasets: [

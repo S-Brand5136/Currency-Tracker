@@ -6,6 +6,7 @@ import SearchSvg from "../assets/images/search.svg";
 import useAxios from "../hooks/useAxios";
 import CurrencyCard from "../components/cards/CurrencyCard";
 import { CurrentTrendData } from "../interfaces/CoinCap";
+import NotFound from "../components/NotFound";
 
 export default function SearchTab() {
   const [searchValue, setSearchValue] = useState("");
@@ -59,7 +60,7 @@ export default function SearchTab() {
           />
         </View>
       )}
-      {!dataArray && !loading && (
+      {!dataArray && !loading && !error && (
         <View style={styles.layout}>
           <SearchSvg height={300} width={300} />
           <Text style={{ fontSize: 18, fontFamily: "Cabin-Bold" }}>
@@ -68,6 +69,7 @@ export default function SearchTab() {
         </View>
       )}
       {loading && <Loader size={"large"} color='rgba(0, 99, 245, 1)' />}
+      {error && <NotFound title='Cannot find any currencies with that name!' />}
     </View>
   );
 }

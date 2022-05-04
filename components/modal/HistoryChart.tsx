@@ -5,6 +5,7 @@ import { LineChart } from "react-native-chart-kit";
 import { LineChartData } from "react-native-chart-kit/dist/line-chart/LineChart";
 import useAxios from "../../hooks/useAxios";
 import Loader from "../Loader";
+import NotFound from "../NotFound";
 import FilterList from "./FilterList";
 
 type Props = {
@@ -86,6 +87,9 @@ const HistoryChart = (props: Props) => {
           withHorizontalLabels={false}
           withVerticalLabels={false}
         />
+      )}
+      {error && (
+        <NotFound title='An error has occurred. Cannot retrieve data' />
       )}
       <FilterList
         interval={interval}

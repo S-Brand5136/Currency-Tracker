@@ -6,6 +6,7 @@ import useAxios from "../hooks/useAxios";
 import Banner from "../components/Banner";
 import Loader from "../components/Loader";
 import { useEffect } from "react";
+import NotFound from "../components/NotFound";
 
 export default function HomeTab({}: RootTabScreenProps<"TabOne">) {
   const { response, loading, error, sendData } = useAxios(
@@ -33,6 +34,9 @@ export default function HomeTab({}: RootTabScreenProps<"TabOne">) {
       </Text>
       {loading && <Loader size={"large"} color='rgba(0, 99, 245, 1)' />}
       {!loading && !error ? <TrendingList data={response?.data.data} /> : null}
+      {error && (
+        <NotFound title='An error has occurred. Cannot retrieve data' />
+      )}
     </View>
   );
 }

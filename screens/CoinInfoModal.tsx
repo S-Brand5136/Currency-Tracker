@@ -1,12 +1,13 @@
 import { useEffect } from "react";
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { RootStackParamList } from "../@types/types";
 import ModalHeader from "../components/modal/ModalHeader";
 import HistoryChart from "../components/modal/HistoryChart";
 import CurrencyCard from "../components/cards/CurrencyCard";
 import ModalFooter from "../components/modal/ModalFooter";
 import CardButton from "../components/cards/CardButton";
+import { BoldText } from "../components/StyledText";
 
 const CoinInfoModal = () => {
   const {
@@ -21,20 +22,24 @@ const CoinInfoModal = () => {
     });
   }, []);
 
+  const percentChangedColour = `${
+    changePercent24Hr.charAt(0) === "-" ? "red" : "green"
+  }`;
+
   return (
     <View style={styles.layout}>
       <View style={styles.priceLayout}>
-        <Text style={styles.price}>$ {Number(priceUsd).toFixed(2)}</Text>
-        <Text
-          style={{
-            ...styles.percentChanged,
-            ...{
-              color: `${changePercent24Hr.charAt(0) === "-" ? "red" : "green"}`,
-            },
-          }}
+        <BoldText fontSize={22} style={styles.price}>
+          $ {Number(priceUsd).toFixed(2)}
+        </BoldText>
+        <BoldText
+          fontSize={16}
+          lightColor={percentChangedColour}
+          darkColor={percentChangedColour}
+          style={styles.percentChanged}
         >
           {Number(changePercent24Hr).toFixed(2)}%
-        </Text>
+        </BoldText>
       </View>
 
       <HistoryChart id={id} />
@@ -66,13 +71,9 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   price: {
-    fontSize: 22,
-    fontFamily: "Cabin-Bold",
     marginRight: 15,
   },
   percentChanged: {
-    fontSize: 16,
-    fontFamily: "Cabin-Bold",
     opacity: 0.8,
     textAlign: "right",
   },

@@ -13,7 +13,7 @@ import Colors from "../constants/Colors";
 const BottomTab = createBottomTabNavigator<RootTabParamList>();
 
 export const BottomTabNavigator = () => {
-  const colorScheme = useColorScheme() || "light";
+  const colorScheme = "light";
 
   return (
     <BottomTab.Navigator

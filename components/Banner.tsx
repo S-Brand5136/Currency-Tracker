@@ -1,5 +1,6 @@
-import { TouchableOpacity, StyleSheet, Text, View } from "react-native";
 import React from "react";
+import { TouchableOpacity, StyleSheet, View } from "react-native";
+import { RegularText, BoldText } from "./StyledText";
 import { useNavigation } from "@react-navigation/native";
 
 type Props = {
@@ -10,15 +11,32 @@ type Props = {
 };
 
 const Banner = ({ title, message, buttonText, color }: Props) => {
+  const textColour = "#fff";
   const navigation = useNavigation();
 
   return (
     <View style={{ ...styles.layout, backgroundColor: color }}>
-      <Text style={styles.title}>{title}</Text>
-      <Text style={styles.message}>{message}</Text>
+      <RegularText lightColor={textColour} darkColor={textColour} fontSize={14}>
+        {title}
+      </RegularText>
+      <BoldText
+        lightColor={textColour}
+        darkColor={textColour}
+        fontSize={22}
+        style={styles.message}
+      >
+        {message}
+      </BoldText>
       <TouchableOpacity onPress={() => navigation.navigate("Search")}>
         <View style={styles.buttonLayout}>
-          <Text style={styles.buttonText}>{buttonText}</Text>
+          <BoldText
+            darkColor='#0063F5'
+            lightColor='#0063F5'
+            fontSize={14}
+            style={styles.buttonText}
+          >
+            {buttonText}
+          </BoldText>
         </View>
       </TouchableOpacity>
     </View>
@@ -36,15 +54,7 @@ const styles = StyleSheet.create({
     padding: 20,
     width: "95%",
   },
-  title: {
-    color: "#fff",
-    fontSize: 14,
-    fontFamily: "Cabin-Regular",
-  },
   message: {
-    color: "#fff",
-    fontSize: 22,
-    fontFamily: "Cabin-Bold",
     marginBottom: 25,
   },
   buttonLayout: {
@@ -59,10 +69,6 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     marginTop: 5,
-    textAlign: "center",
-    color: "#0063F5",
-    fontFamily: "Cabin-Bold",
-    fontSize: 14,
     marginBottom: 10,
   },
 });

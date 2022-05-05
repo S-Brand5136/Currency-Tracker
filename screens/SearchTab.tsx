@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { View, StyleSheet, Text, FlatList } from "react-native";
+import { View, StyleSheet, FlatList } from "react-native";
 import SearchForm from "../components/SearchForm";
 import Loader from "../components/Loader";
 import SearchSvg from "../assets/images/search.svg";
@@ -7,6 +7,7 @@ import useAxios from "../hooks/useAxios";
 import CurrencyCard from "../components/cards/CurrencyCard";
 import { CurrentTrendData } from "../interfaces/CoinCap";
 import NotFound from "../components/NotFound";
+import { BoldText } from "../components/StyledText";
 
 export default function SearchTab() {
   const [searchValue, setSearchValue] = useState("");
@@ -63,9 +64,7 @@ export default function SearchTab() {
       {!dataArray && !loading && !error && (
         <View style={styles.layout}>
           <SearchSvg height={300} width={300} />
-          <Text style={{ fontSize: 18, fontFamily: "Cabin-Bold" }}>
-            Start Searching...
-          </Text>
+          <BoldText fontSize={18}>Start Searching...</BoldText>
         </View>
       )}
       {loading && <Loader size={"large"} color='rgba(0, 99, 245, 1)' />}

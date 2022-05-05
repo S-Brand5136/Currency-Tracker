@@ -1,40 +1,38 @@
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { View, TouchableOpacity, StyleSheet } from "react-native";
 import React from "react";
+import { BoldText } from "../StyledText";
 
-type Props = {};
+type Props = {
+  title: string;
+};
 
-const ModalFooter = (props: Props) => {
+const ButtonText = (props: Props) => {
+  return (
+    <BoldText
+      darkColor='#fff'
+      lightColor='#fff'
+      fontSize={18}
+      letterSpacing={0.75}
+    >
+      {props.title}
+    </BoldText>
+  );
+};
+
+const ModalFooter = () => {
   return (
     <View style={styles.layout}>
       <TouchableOpacity
         style={styles.buySellButton}
         onPress={() => console.log("Buy")}
       >
-        <Text
-          style={{
-            color: "#fff",
-            fontFamily: "Cabin-Bold",
-            fontSize: 18,
-            letterSpacing: 0.75,
-          }}
-        >
-          BUY
-        </Text>
+        <ButtonText title='BUY' />
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.buySellButton}
-        onPress={() => console.log("Buy")}
+        onPress={() => console.log("Sell")}
       >
-        <Text
-          style={{
-            color: "#fff",
-            fontFamily: "Cabin-Bold",
-            fontSize: 18,
-            letterSpacing: 0.75,
-          }}
-        >
-          SELL
-        </Text>
+        <ButtonText title='SELL' />
       </TouchableOpacity>
     </View>
   );

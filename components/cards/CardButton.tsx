@@ -1,6 +1,7 @@
 import React from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
+import { BoldText } from "../StyledText";
 
 type Props = {
   title: string;
@@ -12,7 +13,7 @@ const CardButton = (props: Props) => {
     <View style={styles.layout}>
       <TouchableOpacity onPress={() => props.onPress()}>
         <View style={styles.buttonLayout}>
-          <Text style={styles.buttonText}>{props.title}</Text>
+          <BoldText fontSize={16}>{props.title}</BoldText>
           <MaterialIcons name='arrow-forward-ios' style={styles.icon} />
         </View>
       </TouchableOpacity>
@@ -40,13 +41,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
   },
-  buttonText: {
-    fontFamily: "Cabin-Bold",
-    fontSize: 16,
-    letterSpacing: 0.75,
-  },
   icon: {
-    fontFamily: "Cabin-Bold",
     fontSize: 20,
     textAlign: "right",
     width: "73%",

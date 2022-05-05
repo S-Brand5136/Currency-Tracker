@@ -1,7 +1,8 @@
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { View, TouchableOpacity, StyleSheet } from "react-native";
 import { CurrentTrendData } from "../../interfaces/CoinCap";
+import { BoldText } from "../StyledText";
 
 type Props = {
   item: CurrentTrendData;
@@ -27,6 +28,10 @@ const CurrencyCard = ({
 }: Props) => {
   const navigation = useNavigation();
   const title = interpolateId(id);
+  const textColour = "#fff";
+  const percentChangedColor = `${
+    changePercent24Hr.charAt(0) === "-" ? "red" : "green"
+  }`;
 
   return (
     <View style={styles.layout}>
@@ -44,31 +49,35 @@ const CurrencyCard = ({
         style={styles.buttonLayout}
       >
         <View style={{ flexDirection: "row" }}>
-          <Text style={styles.rank}>{rank}</Text>
+          <BoldText
+            fontSize={14}
+            lightColor={textColour}
+            darkColor={textColour}
+            style={styles.rank}
+          >
+            {rank}
+          </BoldText>
           <View
             style={{
               flexDirection: "column",
               justifyContent: "flex-start",
             }}
           >
-            <Text style={styles.title}>{title}</Text>
-            <Text style={styles.symbol}>{symbol}</Text>
+            <BoldText letterSpacing={0.5} fontSize={16}>
+              {title}
+            </BoldText>
+            <BoldText style={styles.symbol}>{symbol}</BoldText>
           </View>
         </View>
         <View>
-          <Text style={styles.price}>$ {Number(priceUsd).toFixed(2)}</Text>
-          <Text
-            style={{
-              ...styles.percentChanged,
-              ...{
-                color: `${
-                  changePercent24Hr.charAt(0) === "-" ? "red" : "green"
-                }`,
-              },
-            }}
+          <BoldText fontSize={15}>$ {Number(priceUsd).toFixed(2)}</BoldText>
+          <BoldText
+            lightColor={percentChangedColor}
+            darkColor={percentChangedColor}
+            style={styles.percentChanged}
           >
             {Number(changePercent24Hr).toFixed(2)}%
-          </Text>
+          </BoldText>
         </View>
       </TouchableOpacity>
     </View>
@@ -96,30 +105,15 @@ const styles = StyleSheet.create({
   rank: {
     backgroundColor: "#0063F5",
     borderRadius: 100,
-    color: "#fff",
-    fontSize: 14,
-    fontFamily: "Cabin-Bold",
     marginRight: 10,
     paddingTop: 10,
     width: 40,
     textAlign: "center",
   },
-  title: {
-    fontSize: 16,
-    fontFamily: "Cabin-Bold",
-    letterSpacing: 0.5,
-  },
   symbol: {
-    fontSize: 12,
     opacity: 0.8,
-    fontFamily: "Cabin-Regular",
-  },
-  price: {
-    fontSize: 15,
-    fontFamily: "Cabin-Bold",
   },
   percentChanged: {
-    fontFamily: "Cabin-Bold",
     opacity: 0.8,
     textAlign: "right",
   },

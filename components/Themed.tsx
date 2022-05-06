@@ -28,6 +28,13 @@ interface TextThemeProps extends ThemeProps {
   letterSpacing?: number;
 }
 
+interface ViewThemeProps extends ThemeProps {
+  flexDirection?: string;
+  justifyContent?: string;
+  alignContent?: string;
+  alignItems?: string;
+}
+
 export type TextProps = TextThemeProps & DefaultText["props"];
 export type ViewProps = ThemeProps & DefaultView["props"];
 

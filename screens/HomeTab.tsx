@@ -1,5 +1,4 @@
 import { StyleSheet } from "react-native";
-import { View } from "../components/Themed";
 import { RootTabScreenProps } from "../@types/types";
 import TrendingList from "../components/TrendingList";
 import useAxios from "../hooks/useAxios";
@@ -8,6 +7,7 @@ import Loader from "../components/Loader";
 import { useEffect } from "react";
 import NotFound from "../components/NotFound";
 import { BoldText } from "../components/StyledText";
+import { BaseView } from "../components/StyledView";
 
 export default function HomeTab({}: RootTabScreenProps<"TabOne">) {
   const { response, loading, error, sendData } = useAxios(
@@ -23,7 +23,12 @@ export default function HomeTab({}: RootTabScreenProps<"TabOne">) {
   }, []);
 
   return (
-    <View style={styles.container}>
+    <BaseView
+      alignItems='center'
+      justifyContent='center'
+      lightColor='#F8F9FA'
+      style={styles.container}
+    >
       <Banner
         title='Welcome to the Market'
         message='Start tracking your favourite crypto currencies today!'
@@ -38,7 +43,7 @@ export default function HomeTab({}: RootTabScreenProps<"TabOne">) {
       {error && (
         <NotFound title='An error has occurred. Cannot retrieve data' />
       )}
-    </View>
+    </BaseView>
   );
 }
 
@@ -46,8 +51,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 40,
-    alignItems: "center",
-    justifyContent: "center",
   },
   title: {
     marginLeft: 25,

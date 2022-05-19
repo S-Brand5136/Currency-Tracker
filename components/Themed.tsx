@@ -33,10 +33,11 @@ interface ViewThemeProps extends ThemeProps {
   justifyContent?: string;
   alignContent?: string;
   alignItems?: string;
+  backgroundColor?: string;
 }
 
 export type TextProps = TextThemeProps & DefaultText["props"];
-export type ViewProps = ThemeProps & DefaultView["props"];
+export type ViewProps = ViewThemeProps & DefaultView["props"];
 
 export function Text(props: TextProps) {
   const { style, lightColor, darkColor, fontSize, textColor, ...otherProps } =

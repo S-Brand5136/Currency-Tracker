@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 import { BoldText } from "../StyledText";
+import { BaseView } from "../StyledView";
 
 type Props = {
   title: string;
@@ -10,14 +11,18 @@ type Props = {
 
 const CardButton = (props: Props) => {
   return (
-    <View style={styles.layout}>
+    <BaseView
+      justifyContent='space-between'
+      alignItems='center'
+      style={styles.layout}
+    >
       <TouchableOpacity onPress={() => props.onPress()}>
-        <View style={styles.buttonLayout}>
+        <BaseView flexDirection='row' alignItems='center'>
           <BoldText fontSize={16}>{props.title}</BoldText>
           <MaterialIcons name='arrow-forward-ios' style={styles.icon} />
-        </View>
+        </BaseView>
       </TouchableOpacity>
-    </View>
+    </BaseView>
   );
 };
 
@@ -25,21 +30,13 @@ export default CardButton;
 
 const styles = StyleSheet.create({
   layout: {
-    backgroundColor: "#fff",
+    borderRadius: 5,
+    elevation: 3,
+    shadowColor: "#000",
+    marginVertical: 15,
     width: "94%",
     padding: 12,
     paddingVertical: 15,
-    borderRadius: 5,
-    shadowColor: "#000",
-    elevation: 3,
-    marginVertical: 15,
-    justifyContent: "space-between",
-    alignItems: "center",
-    flexDirection: "row",
-  },
-  buttonLayout: {
-    flexDirection: "row",
-    alignItems: "center",
   },
   icon: {
     fontSize: 20,

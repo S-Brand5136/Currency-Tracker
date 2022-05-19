@@ -1,6 +1,6 @@
 import { View, ViewProps } from "./Themed";
 
-export const StyledView = (props: ViewProps) => {
+export const BaseView = (props: ViewProps) => {
   return (
     <View {...props} style={[props.style]}>
       {props.children}

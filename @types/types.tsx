@@ -20,7 +20,7 @@ export type RootStackParamList = {
   Root: NavigatorScreenParams<RootTabParamList> | undefined;
   Search: NavigatorScreenParams<RootTabParamList> | undefined;
   Profile: NavigatorScreenParams<RootTabParamList> | undefined;
-  Modal: {
+  HistoryModal: {
     title: string;
     id: string;
     symbol: string;
@@ -28,6 +28,8 @@ export type RootStackParamList = {
     priceUsd: string;
     changePercent24Hr: string;
   };
+  LoginModal: NavigatorScreenParams<RootTabParamList> | undefined;
+  RegisterModal: NavigatorScreenParams<RootTabParamList> | undefined;
   NotFound: undefined;
 };
 
@@ -38,7 +40,6 @@ export type RootTabParamList = {
   TabOne: undefined;
   Search: undefined;
   Profile: undefined;
-  Modal: undefined;
 };
 
 export type RootTabScreenProps<Screen extends keyof RootTabParamList> =

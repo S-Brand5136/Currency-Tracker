@@ -46,7 +46,9 @@ export const BottomTabNavigator = () => {
         options={{
           title: "Profile",
           headerShown: false,
-          tabBarIcon: ({ color }) => <TabBarIcon name='person' color={color} />,
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name='person-outline' color={color} />
+          ),
         }}
       />
     </BottomTab.Navigator>

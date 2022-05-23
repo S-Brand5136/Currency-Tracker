@@ -6,10 +6,6 @@ import CoinInfoModal from "../screens/CoinInfoModal";
 import LoginModal from "../screens/LoginModal";
 import RegisterModal from "../screens/RegisterModal";
 
-/**
- * A root stack navigator is often used for displaying modals on top of all other content.
- * https://reactnavigation.org/docs/modal
- */
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export const RootNavigator = () => {

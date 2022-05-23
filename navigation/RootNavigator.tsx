@@ -3,6 +3,8 @@ import { RootStackParamList } from "../@types/types";
 import { BottomTabNavigator } from "./BottomTabNavigator";
 import NotFoundScreen from "../screens/NotFoundScreen";
 import CoinInfoModal from "../screens/CoinInfoModal";
+import LoginModal from "../screens/LoginModal";
+import RegisterModal from "../screens/RegisterModal";
 
 /**
  * A root stack navigator is often used for displaying modals on top of all other content.
@@ -25,9 +27,23 @@ export const RootNavigator = () => {
       />
       <Stack.Group screenOptions={{ presentation: "modal" }}>
         <Stack.Screen
-          name='Modal'
+          name='HistoryModal'
           options={{ headerShadowVisible: false }}
           component={CoinInfoModal}
+        />
+      </Stack.Group>
+      <Stack.Group screenOptions={{ presentation: "modal" }}>
+        <Stack.Screen
+          name='LoginModal'
+          options={{ headerShadowVisible: false }}
+          component={LoginModal}
+        />
+      </Stack.Group>
+      <Stack.Group screenOptions={{ presentation: "modal" }}>
+        <Stack.Screen
+          name='RegisterModal'
+          options={{ headerShadowVisible: false }}
+          component={RegisterModal}
         />
       </Stack.Group>
     </Stack.Navigator>

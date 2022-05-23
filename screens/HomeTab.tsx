@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 import { RootTabScreenProps } from "../@types/types";
 import TrendingList from "../components/TrendingList";
 import useAxios from "../hooks/useAxios";
-import Banner from "../components/Banner";
+import { Banner } from "../components/Banner";
 import Loader from "../components/Loader";
 import { useEffect } from "react";
 import NotFound from "../components/NotFound";

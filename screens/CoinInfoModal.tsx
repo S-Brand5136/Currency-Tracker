@@ -12,7 +12,7 @@ import { BoldText } from "../components/StyledText";
 const CoinInfoModal = () => {
   const {
     params: { title, id, symbol, rank, priceUsd, changePercent24Hr },
-  } = useRoute<RouteProp<RootStackParamList, "Modal">>();
+  } = useRoute<RouteProp<RootStackParamList, "HistoryModal">>();
   const navigation = useNavigation();
 
   useEffect(() => {

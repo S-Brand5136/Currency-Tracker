@@ -37,7 +37,7 @@ const CurrencyCard = ({
     <View style={styles.layout}>
       <TouchableOpacity
         onPress={() =>
-          navigation.navigate("Modal", {
+          navigation.navigate("HistoryModal", {
             title,
             id,
             symbol,

@@ -30,6 +30,8 @@
     },
     "web": {
       "favicon": "./assets/images/favicon.png"
-    }
+    },
+    "description": "",
+    "githubUrl": "https://github.com/S-Brand5136/Currency-Tracker"
   }
 }

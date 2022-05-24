@@ -1,4 +1,4 @@
-import { FlatList, StyleSheet, View } from "react-native";
+import { FlatList, StyleSheet } from "react-native";
 import React from "react";
 import FilterButton from "./FilterButton";
 
@@ -36,8 +36,6 @@ export default FilterList;
 
 const styles = StyleSheet.create({
   layout: {
-    borderColor: "red",
-    borderWidth: 2,
     flexDirection: "row",
     alignContent: "center",
     justifyContent: "space-around",

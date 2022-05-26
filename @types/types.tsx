@@ -28,8 +28,8 @@ export type RootStackParamList = {
     priceUsd: string;
     changePercent24Hr: string;
   };
-  LoginModal: NavigatorScreenParams<RootTabParamList> | undefined;
-  RegisterModal: NavigatorScreenParams<RootTabParamList> | undefined;
+  Login: NavigatorScreenParams<RootTabParamList> | undefined;
+  Register: NavigatorScreenParams<RootTabParamList> | undefined;
   NotFound: undefined;
 };
 

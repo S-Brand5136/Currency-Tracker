@@ -30,14 +30,14 @@ export const RootNavigator = () => {
       </Stack.Group>
       <Stack.Group screenOptions={{ presentation: "modal" }}>
         <Stack.Screen
-          name='LoginModal'
+          name='Login'
           options={{ headerShadowVisible: false }}
           component={LoginModal}
         />
       </Stack.Group>
       <Stack.Group screenOptions={{ presentation: "modal" }}>
         <Stack.Screen
-          name='RegisterModal'
+          name='Register'
           options={{ headerShadowVisible: false }}
           component={RegisterModal}
         />

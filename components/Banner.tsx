@@ -71,7 +71,7 @@ export const ProfileBanner = ({
         {username}
       </RegularText>
       <View style={styles.doubleButtonLayout}>
-        <TouchableOpacity onPress={() => navigation.navigate("LoginModal")}>
+        <TouchableOpacity onPress={() => navigation.navigate("Login")}>
           <View style={styles.doubleButton}>
             <BoldText
               darkColor={color}
@@ -83,7 +83,7 @@ export const ProfileBanner = ({
             </BoldText>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate("RegisterModal")}>
+        <TouchableOpacity onPress={() => navigation.navigate("Register")}>
           <View style={styles.doubleButton}>
             <BoldText
               darkColor={color}

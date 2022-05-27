@@ -31,14 +31,22 @@ export const RootNavigator = () => {
       <Stack.Group screenOptions={{ presentation: "modal" }}>
         <Stack.Screen
           name='Login'
-          options={{ headerShadowVisible: false }}
+          options={{
+            headerShadowVisible: false,
+            title: "",
+            headerStyle: { backgroundColor: "#F8F9FA" },
+          }}
           component={LoginModal}
         />
       </Stack.Group>
       <Stack.Group screenOptions={{ presentation: "modal" }}>
         <Stack.Screen
           name='Register'
-          options={{ headerShadowVisible: false }}
+          options={{
+            headerShadowVisible: false,
+            title: "",
+            headerStyle: { backgroundColor: "#F8F9FA" },
+          }}
           component={RegisterModal}
         />
       </Stack.Group>

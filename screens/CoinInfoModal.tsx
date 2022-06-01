@@ -6,7 +6,7 @@ import ModalHeader from "../components/modal/ModalHeader";
 import HistoryChart from "../components/modal/HistoryChart";
 import CurrencyCard from "../components/cards/CurrencyCard";
 import ModalFooter from "../components/modal/ModalFooter";
-import CardButton from "../components/cards/CardButton";
+import CardButton from "../components/buttons/CardButton";
 import { BoldText } from "../components/StyledText";
 
 const CoinInfoModal = () => {

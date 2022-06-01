@@ -1,6 +1,6 @@
 import { FlatList, StyleSheet } from "react-native";
 import React from "react";
-import FilterButton from "./FilterButton";
+import FilterButton from "../buttons/FilterButton";
 
 type Props = {
   intervals: Array<{
